@@ -35,6 +35,7 @@ module Jekyll
           site.static_files << Jekyll::StaticFile.new(site, site.source, @@globals['output_directory'], @@globals['output_file'])
         end
       else
+        #else the filejoins have already been executed (IE: We are regenerating and not building)
         FileUtils.mkdir_p(@@globals["src_dir"]) unless File.exists?(@@globals["src_dir"])
         f = File.new(@@globals["json_file_path"], "w+")
         f.puts config_json

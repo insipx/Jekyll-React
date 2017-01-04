@@ -21,18 +21,18 @@ module Jekyll
 
     def generate(site)
        
-      @@globals["src_dir"] = File.join(site.source, @@globals["output_directory"]) unless @@globals["src_dir"].any?
-      @@globals["dst_dir"] = File.join(site.dest, @@globals["output_directory"]) unless @@globals["dst_dir"].any?
+      @@globals["src_dir"] = File.join(site.source, @@globals["output_directory"]) unless !@@globals["src_dir"].nil?
+      @@globals["dst_dir"] = File.join(site.dest, @@globals["output_directory"]) unless !@@globals["dst_dir"].nil?
       FileUtils.mkdir_p(@@globals["src_dir"]) unless File.exists?(@@globals["src_dir"])
 
       config = site.config['react']
       config_json = config.to_json
       
-      @@globals["json_file_path"] = File.join(@@globals["src_dir"], @@globals["json_file"]) unless @@globals["json_file_path"].any?
+      @@globals["json_file_path"] = File.join(@@globals["src_dir"], @@globals["json_file"]) unless !@@globals["json_file_path"].nil?
       f = File.new(@@globals["json_file_path"], "w+") unless !File.file(@@globals["json_file_path"])
       f.puts config_json
       f.close
-      if File.file(src_dir)
+      if File.file?(src_dir)
         site.static_files << Jekyll::StaticFile.new(site, site.source, @@globals['output_directory'], @@globals['output_file'])
       end
      

@@ -46,7 +46,7 @@ module Jekyll
       super_write
 
       # cleanup source folder
-      src_folder = File.join(source, GenerateJSON::json_output_directory)
+      src_folder = File.join(source, GenerateJSON::json_output_directory) unless !File.file?([source, GenerateJSON::json_output_directory].join('/'))
       File.unlink GenerateJSON::json_file if File.exists?(GenerateJSON::json_file)
       FileUtils.rm_rf(src_folder)
       src_arr = src_folder.split("/")

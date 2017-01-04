@@ -1,7 +1,7 @@
 
 Gem::Specification.new do |spec|
   spec.name         ="jekyll_config_to_JSON"
-  spec.version      ="0.0.2"
+  spec.version      ="0.0.3"
   spec.authors      ="Andrew Plaza (InsidiousMind)"
   spec.email        =["aplaza@liquidthink.net"]
   spec.summary      =%q{A Jekyll Plugin that generates a JSON file of configuration variables}

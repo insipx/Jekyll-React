@@ -6,30 +6,30 @@ module Jekyll
     safe true
     priority :low
     @@globals = {
-      "json_file" => "config.json",
+      "json_file_path" => nil,
       "output_directory" => "/api/v1/",
       "output_file" => "config.json",
-      "src_dir" => "",
-      "dst_dir" => ""
+      "src_dir" => nil,
+      "dst_dir" => nil
     }
     def self.json_output_directory
       @@globals["output_directory"]
     end
     def self.json_file
-      @@globals["json_file"]
+      @@globals["json_file_path"]
     end
 
     def generate(site)
-      
-      @@globals["src_dir"] = File.join(site.source, @@globals["output_directory"])
-      @@globals["dst_dir"] = File.join(site.dest, @@globals["output_directory"])
+       
+      @@globals["src_dir"] = File.join(site.source, @@globals["output_directory"]) unless @@globals["src_dir"].any?
+      @@globals["dst_dir"] = File.join(site.dest, @@globals["output_directory"]) unless @@globals["dst_dir"].any?
       FileUtils.mkdir_p(@@globals["src_dir"]) unless File.exists?(@@globals["src_dir"])
 
       config = site.config['react']
       config_json = config.to_json
       
-      @@globals["json_file"] = File.join(@@globals["src_dir"], @@globals["json_file"])
-      f = File.new(@@globals["json_file"], "w+")
+      @@globals["json_file_path"] = File.join(@@globals["src_dir"], @@globals["json_file"]) unless @@globals["json_file_path"].any?
+      f = File.new(@@globals["json_file_path"], "w+")
       f.puts config_json
       f.close
       

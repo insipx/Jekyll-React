@@ -34,7 +34,16 @@ module Jekyll
         if File.exists?@@globals["json_file_path"]
           site.static_files << Jekyll::StaticFile.new(site, site.source, @@globals['output_directory'], @@globals['output_file'])
         end
+      else
+        FileUtils.mkdir_p(@@globals["src_dir"]) unless File.exists?(@@globals["src_dir"])
+        f = File.new(@@globals["json_file_path"], "w+")
+        f.puts config_json
+        f.close
+        if File.exists?@@globals["json_file_path"]
+          site.static_files << Jekyll::StaticFile.new(site, site.source, @@globals['output_directory'], @@globals['output_file'])
+        end
       end
+
 
      
     end

@@ -48,11 +48,11 @@ module Jekyll
       # cleanup source folder
       src_folder = File.join(source, GenerateJSON::json_output_directory) unless !File.file?([source, GenerateJSON::json_output_directory].join('/'))
       File.unlink GenerateJSON::json_file if File.exists?(GenerateJSON::json_file)
-      FileUtils.rm_rf(src_folder)
+      FileUtils.rm_rf(src_folder) unless !File.file?(src_folder)
       src_arr = src_folder.split("/")
       src_arr.pop
       src_folder = src_arr.join("/")
-      FileUtils.rm_rf(src_folder)
+      FileUtils.rm_rf(src_folder) unless !File.file?(src_folder)
 
     end
   end

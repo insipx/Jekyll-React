@@ -32,8 +32,9 @@ module Jekyll
       f = File.new(@@globals["json_file_path"], "w+")
       f.puts config_json
       f.close
-      
-      site.static_files << Jekyll::StaticFile.new(site, site.source, @@globals['output_directory'], @@globals['output_file'])
+      if File.file(src_dir)
+        site.static_files << Jekyll::StaticFile.new(site, site.source, @@globals['output_directory'], @@globals['output_file'])
+      end
      
     end
   end

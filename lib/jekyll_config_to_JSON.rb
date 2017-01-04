@@ -29,7 +29,7 @@ module Jekyll
       config_json = config.to_json
       
       @@globals["json_file_path"] = File.join(@@globals["src_dir"], @@globals["json_file"]) unless @@globals["json_file_path"].any?
-      f = File.new(@@globals["json_file_path"], "w+")
+      f = File.new(@@globals["json_file_path"], "w+") unless !File.file(@@globals["json_file_path"])
       f.puts config_json
       f.close
       if File.file(src_dir)

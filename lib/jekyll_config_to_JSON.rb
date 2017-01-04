@@ -7,7 +7,7 @@ module Jekyll
     priority :low
     @@globals = {
       "json_file_path" => "",
-      "output_directory" => "/.api/v1/",
+      "output_directory" => "/api/v1/",
       "output_file" => "config.json",
       "src_dir" => "",
       "dst_dir" => ""

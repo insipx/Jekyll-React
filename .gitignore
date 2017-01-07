@@ -1,0 +1,9 @@
+/.bundle/
+/gemfiles/*.lock
+/Gemfile.lock
+/spec/reports/
+*.bundle
+*.so
+*.o
+*.a
+.*.swp

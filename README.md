@@ -4,7 +4,7 @@ This is a Jekyll plugin which will generate a JSON file of select configuration 
 
 to add properties to be generated, simply edit your `_config.yml`
 
-This Plugin was inspired and made possible by https://github.com/18F/jekyll_pages_api
+This Plugin was inspired by https://github.com/18F/jekyll_pages_api
   This plugin was made out of a custom-use-case (Jekyll and ReactJS) that I think does not belong in the jekyll_pages_api plugin,
   however, if 18F decides that this functionality would be welcome in their plugin, I would be more than happy to contribute (Though, i'm not the best at Ruby)
 

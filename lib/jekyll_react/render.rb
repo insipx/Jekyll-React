@@ -63,11 +63,11 @@ module JekyllReact
         payload["paginator"] = document.pager.to_liquid
       end
 
-      if document.is_a?(Jekyll::Document) && document.collection.label == "posts"
-        payload["site"]["related_posts"] = document.related_posts
-      else
-        payload["site"]["related_posts"] = nil
-      end
+      # if document.is_a?(Jekyll::Document) && document.collection.label == "posts"
+      # payload["site"]["related_posts"] = document.related_posts
+      # else
+      # payload["site"]["related_posts"] = nil
+      # end
 
       # render and transform content (this becomes the final content of the object)
       payload["highlighter_prefix"] = converters.first.highlighter_prefix
